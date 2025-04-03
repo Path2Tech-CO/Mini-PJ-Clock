@@ -45,3 +45,16 @@
     z-index: -1;
 
 }
+
+
+.container::after{
+    content: '';
+    width: 180px;
+    height: 180px;
+    background: rgb(230, 148, 148);
+    border-radius: 50%;
+    position: absolute;
+    right: -120px;
+    bottom: 90px;
+    z-index: -1;
+}
