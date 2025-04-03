@@ -19,19 +19,24 @@
         </div>
     </div>
 
+    <canvas>
+        id="analog" width="400" height="400"
+    </canvas>
+
     <script>
         let hrs = document.getElementById("hrs");
         let min = document.getElementById("min");
         let sec = document.getElementById("sec");
+        let dateDisplay = document.getElementById("dateDisplay")
 
 
-        setInterval(() => {
-            let currrentTime = new Date(); 
+        setInterval(()=>{
+            let currentTime = new Date(); 
 
-        hrs.innerHTML = currrentTime.getHours();
-        min.innerHTML = currrentTime.getMinutes();
-        sec.innerHTML = currrentTime.getSeconds();
-        }) 
+            hrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
+            min.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
+            sec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+        },1000) 
 
 
     </script>
