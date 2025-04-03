@@ -12,9 +12,9 @@
             <div id="greeting"></div>
             <div class="time">
                 <span id="hrs">00</span>
-                <span>:</span>
+                <span id="colon1">:</span>
                 <span id="min">00</span>
-                <span>:</span>
+                <span id="colon2">:</span>
                 <span id="sec">00</span>
                 <span id="ampm">AM</span>
             </div>
@@ -58,6 +58,12 @@
             ampm.innerHTML = period;
 
             updateGreeting();
+
+            let isVisible = currentTime.getSeconds() % 2 === 0;
+            colon1.style.visibility = isVisible ? "hidden" : "visible";
+            colon2.style.visibility = isVisible ? "hidden" : "visible";
+
+
         }, 1000); 
 
 
