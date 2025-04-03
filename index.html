@@ -30,6 +30,7 @@
             <p>Sydney: <span id="sydney-time">00:00:00 AM</span></p>
         </div> 
     </div>
+</div>
 
 
     <script>
@@ -38,6 +39,8 @@
         let sec = document.getElementById("sec");
         let ampm = document.getElementById("ampm");
         let greeting = document.getElementById("greeting");
+        let colon1 = document.getElementById("colon1");
+        let colon2 = document.getElementById("colon2");
 
 
         let nyTime = document.getElementById("ny-time");
@@ -62,21 +65,20 @@
 
 
         function updateWorldClock() {
-            let now = new Date();
-        }
-
+           let options = { timeZoneName: "short", hour12: true, hour: "2-digit", minute: "2-digit", second: "2-digit" };
+        
 
         let ny = new Date().toLocaleString("en-US", { timeZone: "America/New_York", hour12: true});
         let london = new Date().toLocaleString("en-GB", { timeZone: "Europe/London", hour12: true});
         let tokyo = new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", hour12: true});
         let sydney = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney", hour12: true});
 
-        nyTime.innerHTML = ny.split(", ")[1];
-        londonTime.innerHTML = london.split(",")[1];
-        tokyoTime.innerHTML = tokyo.split(", ")[1];
-        sydneyTime.innerHTML = sydney.split(", ")[1];
-
-
+        nyTime.innerHTML = ny;
+        londonTime.innerHTML = london;
+        tokyoTime.innerHTML = tokyo;
+        sydneyTime.innerHTML = sydney;
+        }
+    
 
 
         setInterval(() => {
