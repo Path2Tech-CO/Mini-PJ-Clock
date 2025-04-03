@@ -24,11 +24,14 @@
         let min = document.getElementById("min");
         let sec = document.getElementById("sec");
 
-        let currrentTime = new Date(); 
+
+        setInterval(() => {
+            let currrentTime = new Date(); 
 
         hrs.innerHTML = currrentTime.getHours();
         min.innerHTML = currrentTime.getMinutes();
         sec.innerHTML = currrentTime.getSeconds();
+        }) 
 
 
     </script>
