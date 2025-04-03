@@ -96,9 +96,10 @@
     content: 'SECONDS';
 }
 
-#ampm {
-    font-size: 1.2em;
+#greeting {
+    font-size: 3.0em;
     font-weight: bold;
-    margin-left: 5px;
-    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+    color: rgb(201, 153, 49);
 }

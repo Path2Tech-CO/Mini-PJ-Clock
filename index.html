@@ -9,7 +9,7 @@
 <body>
     <div class="main">
         <div class="container">
-            <div class="date" id="dateDisplay"></div>
+            <div id="greeting"></div>
             <div class="time">
                 <span id="hrs">00</span>
                 <span>:</span>
@@ -21,40 +21,45 @@
         </div>
     </div>
 
-    <canvas id="analog" width="400" height="400"></canvas>
-
     <script>
         let hrs = document.getElementById("hrs");
         let min = document.getElementById("min");
         let sec = document.getElementById("sec");
-        let dateDisplay = document.getElementById("dateDisplay")
+        let ampm = document.getElementById("ampm");
+        let greeting = document.getElementById("greeting");
 
 
-        function updateClockAndDate() {
-            let dateDisplay = document.getElementById("dateDisplay");
-            let now = new Date();
+        function updateGreeting() {
+            let hour = new Date().getHours();
+            let message = "";
 
-            hrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
-            min.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
-            sec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
-       
-            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            if (hour < 12) {
+                message = "Good Morning! ☀"; 
+            } else if (hour < 18) {
+                message = "Good Afternoon! 🌤"; 
+            } else {
+                message = "Good Evening! 🌙";
+            }
 
-            let day = days [now.getDay()];
-            let months = months[[now.getMonth()]];
-            let date = now.getDate();
-            let year = now.getFullYear();
-
-           let fullDate = `{day}, ${month} ${date}, ${year}`;
+            greeting.innerHTML = message;
         }
 
-            console.log("Date Generated", fullDate);
 
-            dateDisplay.innerHTML = fullDate;
+        setInterval(() => {
+            let currentTime = new Date(); 
 
-            setInterval(updateClockAndDate, 1000);
-            updateClockAndDate();
+            let hours = currentTime.getHours();
+            let period = hours >= 12 ? "PM" : "AM";
+            hours = hours % 12 || 12;
+
+            hrs.innerHTML = (hours < 10 ? "0" : "") + hours;
+            min.innerHTML = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
+            sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
+            ampm.innerHTML = period;
+
+            updateGreeting();
+        }, 1000); 
+
 
     </script>
 </body>
