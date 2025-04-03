@@ -6,5 +6,9 @@
 }
 
 .main{
-    width: 100%
+    width: 100%; 
+    min-height: 100vh;
+    background: linear-gradient(90deg, #cfecd0, #ffc5ca);
+    color:rgb(171, 131, 72);
+    position: relative;
 }
