@@ -9,19 +9,19 @@
 <body>
     <div class="main">
         <div class="container">
+            <div class="date" id="dateDisplay"></div>
             <div class="time">
                 <span id="hrs">00</span>
                 <span>:</span>
                 <span id="min">00</span>
                 <span>:</span>
                 <span id="sec">00</span>
+                <span id="ampm">AM</span>
             </div>
         </div>
     </div>
 
-    <canvas>
-        id="analog" width="400" height="400"
-    </canvas>
+    <canvas id="analog" width="400" height="400"></canvas>
 
     <script>
         let hrs = document.getElementById("hrs");
@@ -30,14 +30,31 @@
         let dateDisplay = document.getElementById("dateDisplay")
 
 
-        setInterval(()=>{
-            let currentTime = new Date(); 
+        function updateClockAndDate() {
+            let dateDisplay = document.getElementById("dateDisplay");
+            let now = new Date();
 
             hrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
             min.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
             sec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
-        },1000) 
+       
+            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+            let day = days [now.getDay()];
+            let months = months[[now.getMonth()]];
+            let date = now.getDate();
+            let year = now.getFullYear();
+
+           let fullDate = `{day}, ${month} ${date}, ${year}`;
+        }
+
+            console.log("Date Generated", fullDate);
+
+            dateDisplay.innerHTML = fullDate;
+
+            setInterval(updateClockAndDate, 1000);
+            updateClockAndDate();
 
     </script>
 </body>
