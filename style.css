@@ -12,3 +12,14 @@
     color:rgb(171, 131, 72);
     position: relative;
 }
+
+.container{
+    width: 800px;
+    height: 180px;
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+}
