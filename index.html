@@ -21,6 +21,17 @@
         </div>
     </div>
 
+    <div class="world-clock">
+        <h2>World Clocks</h2>
+        <div class="city-time">
+            <p>New York: <span id="ny-time">00:00:00 AM</span></p>
+            <p>London: <span id="london-time">00:00:00 AM</span></p>
+            <p>Tokyo: <span id="tokyo-time">00:00:00 AM</span></p>
+            <p>Sydney: <span id="sydney-time">00:00:00 AM</span></p>
+        </div> 
+    </div>
+
+
     <script>
         let hrs = document.getElementById("hrs");
         let min = document.getElementById("min");
@@ -28,6 +39,11 @@
         let ampm = document.getElementById("ampm");
         let greeting = document.getElementById("greeting");
 
+
+        let nyTime = document.getElementById("ny-time");
+        let londonTime = document.getElementById("london-time");
+        let tokyoTime = document.getElementById("tokyo-time");
+        let sydneyTime = document.getElementById("sydney-time");
 
         function updateGreeting() {
             let hour = new Date().getHours();
@@ -45,6 +61,24 @@
         }
 
 
+        function updateWorldClock() {
+            let now = new Date();
+        }
+
+
+        let ny = new Date().toLocaleString("en-US", { timeZone: "America/New_York", hour12: true});
+        let london = new Date().toLocaleString("en-GB", { timeZone: "Europe/London", hour12: true});
+        let tokyo = new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", hour12: true});
+        let sydney = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney", hour12: true});
+
+        nyTime.innerHTML = ny.split(", ")[1];
+        londonTime.innerHTML = london.split(",")[1];
+        tokyoTime.innerHTML = tokyo.split(", ")[1];
+        sydneyTime.innerHTML = sydney.split(", ")[1];
+
+
+
+
         setInterval(() => {
             let currentTime = new Date(); 
 
@@ -58,6 +92,7 @@
             ampm.innerHTML = period;
 
             updateGreeting();
+            updateWorldClock();
 
             let isVisible = currentTime.getSeconds() % 2 === 0;
             colon1.style.visibility = isVisible ? "hidden" : "visible";
